@@ -1,4 +1,4 @@
-# 🌍 CeylonTravelX
+# 🌍 JoyTravel Website
 
 A full-stack web application for luxury travel booking.  
 Built with **Laravel (Backend)** + **React Vite (Frontend)**.
