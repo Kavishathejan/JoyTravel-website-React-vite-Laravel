@@ -13,10 +13,7 @@ const Testimonials = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3500,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
-    ],
+    arrows: true,
   };
 
   const testimonials = [
@@ -47,41 +44,57 @@ const Testimonials = () => {
       <h3 className="text-3xl font-bold text-center mb-12">
         What Our Clients Say
       </h3>
-      <Slider {...settings}>
-        {testimonials.map((t, index) => (
-          <div key={index} className="px-2 sm:px-4">
-            <div className="bg-gray-800 rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl 
-                      hover:scale-105 transform transition duration-300 
-                      h-full flex flex-col justify-between">
-              {/* Client Image */}
-              <div className="flex justify-center mb-4">
-                <img
-                  src={t.image}
-                  alt={t.name}
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full 
-                       border-4 border-gray-700 shadow-md"
-                />
+
+      {/* Desktop Slider */}
+      <div className="hidden lg:block">
+        <Slider {...settings}>
+          {testimonials.map((t, index) => (
+            <div key={index} className="px-2 sm:px-4">
+              <div className="bg-gray-800 rounded-2xl p-6 shadow-xl h-full flex flex-col justify-between hover:scale-105 transform transition duration-300">
+                <div className="flex justify-center mb-4">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="w-20 h-20 rounded-full border-4 border-gray-700 shadow-md"
+                  />
+                </div>
+                <p className="text-gray-300 italic mb-4 text-center text-base">
+                  "{t.text}"
+                </p>
+                <div className="flex justify-center text-yellow-400 mb-3 text-base">
+                  ★★★★★
+                </div>
+                <h4 className="text-lg font-semibold text-center">{t.name}</h4>
               </div>
-
-              {/* Testimonial Text */}
-              <p className="text-gray-300 italic mb-4 text-center text-sm sm:text-base">
-                "{t.text}"
-              </p>
-
-              {/* Stars */}
-              <div className="flex justify-center text-yellow-400 mb-3 text-sm sm:text-base">
-                ★★★★★
-              </div>
-
-              {/* Name */}
-              <h4 className="text-md sm:text-lg font-semibold text-center">
-                {t.name}
-              </h4>
             </div>
+          ))}
+        </Slider>
+      </div>
+
+      {/* Tablet & Mobile Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
+        {testimonials.map((t, index) => (
+          <div
+            key={index}
+            className="bg-gray-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between"
+          >
+            <div className="flex justify-center mb-4">
+              <img
+                src={t.image}
+                alt={t.name}
+                className="w-20 h-20 rounded-full border-4 border-gray-700 shadow-md"
+              />
+            </div>
+            <p className="text-gray-300 italic mb-4 text-center text-base">
+              "{t.text}"
+            </p>
+            <div className="flex justify-center text-yellow-400 mb-3 text-base">
+              ★★★★★
+            </div>
+            <h4 className="text-lg font-semibold text-center">{t.name}</h4>
           </div>
         ))}
-      </Slider>
-
+      </div>
     </section>
   );
 };

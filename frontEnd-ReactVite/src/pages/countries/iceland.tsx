@@ -38,9 +38,6 @@ const Iceland = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
-    responsive: [
-      { breakpoint: 768, settings: { slidesToShow: 1, centerMode: false } },
-    ],
   };
 
   return (
@@ -56,19 +53,31 @@ const Iceland = () => {
         Discover Iceland
       </motion.h1>
 
-      {/* Coverflow Slider */}
-      <div className="w-full max-w-6xl mb-10">
+      {/* Desktop Slider */}
+      <div className="hidden lg:block w-full max-w-6xl mb-8 md:mb-10">
         <Slider {...settings}>
           {images.map((img, index) => (
-            <div key={index} className="px-4 flex justify-center">
+            <div key={index} className="px-2 sm:px-4 flex justify-center">
               <img
                 src={img}
                 alt={`Japan ${index + 1}`}
-                className="h-64 md:h-96 w-auto object-cover rounded-2xl shadow-2xl transition-transform duration-500"
+                className="h-96 w-full object-cover rounded-2xl shadow-2xl"
               />
             </div>
           ))}
         </Slider>
+      </div>
+
+      {/* Tablet & Mobile 4-photo grid */}
+      <div className="grid grid-cols-2 gap-4 w-full max-w-4xl mb-8 md:mb-10 lg:hidden">
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Japan ${index + 1}`}
+            className="w-full h-48 sm:h-64 object-cover rounded-2xl shadow-2xl"
+          />
+        ))}
       </div>
 
       {/* Content */}
